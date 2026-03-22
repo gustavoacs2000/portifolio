@@ -19,13 +19,13 @@ const containerVariants = {
 };
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const fadeIn = {
-  hidden:  { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1.1, ease: "easeOut" } },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1.1, ease: "easeOut" as const } },
 };
 
 // ─── Property stat pill ───────────────────────────────────────────────────────
@@ -73,9 +73,9 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
   });
 
   // Parallax: imagem sobe mais devagar que o scroll
-  const imageY    = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   // Copy desce levemente com scroll — efeito de profundidade
-  const contentY  = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
   // Overlay escurece com scroll
   const overlayOp = useTransform(scrollYProgress, [0, 0.5], [0.45, 0.72]);
 
@@ -104,11 +104,11 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
 
       {/* ── Gradient overlay — bottom-heavy para legibilidade do copy ── */}
       <motion.div
-        style={{ opacity: overlayOp }}
-        className="absolute inset-0 pointer-events-none"
         style={{
+          opacity: overlayOp,
           background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%)",
         }}
+        className="absolute inset-0 pointer-events-none"
       />
 
       {/* ── Vinheta lateral esquerda ── */}
@@ -217,9 +217,9 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
             variants={fadeUp}
             className="flex flex-wrap gap-6 mb-8"
           >
-            <StatPill icon={BedDouble} value="5 suítes"     label="Sendo 1 master" />
-            <StatPill icon={Maximize2} value="620 m²"       label="Área construída" />
-            <StatPill icon={MapPin}    value="1.200 m²"     label="Terreno" />
+            <StatPill icon={BedDouble} value="5 suítes" label="Sendo 1 master" />
+            <StatPill icon={Maximize2} value="620 m²" label="Área construída" />
+            <StatPill icon={MapPin} value="1.200 m²" label="Terreno" />
           </motion.div>
 
           {/* CTA row */}

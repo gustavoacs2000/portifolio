@@ -25,7 +25,7 @@ const fadeUp = {
 
 const fadeIn = {
   hidden:  { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1.0, ease: "easeOut" } },
+  visible: { opacity: 1, transition: { duration: 1.0, ease: "easeOut" as const } },
 };
 
 const slideLeft = {

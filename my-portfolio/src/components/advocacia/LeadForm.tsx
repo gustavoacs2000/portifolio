@@ -97,7 +97,7 @@ const stepVariants = {
   },
   exit: (dir: number) => ({
     opacity: 0, x: dir > 0 ? -32 : 32,
-    transition: { duration: 0.25, ease: "easeIn" },
+    transition: { duration: 0.25, ease: "easeIn" as const },
   }),
 };
 

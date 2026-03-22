@@ -330,7 +330,7 @@ export default function TestimonialsCarousel({
     center: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
     exit: (d: number) => ({
       opacity: 0, x: d > 0 ? -48 : 48,
-      transition: { duration: 0.35, ease: "easeIn" },
+      transition: { duration: 0.35, ease: "easeIn" as const },
     }),
   };
 
@@ -511,7 +511,7 @@ export default function TestimonialsCarousel({
                 className={isDark ? "h-full bg-amber-400" : "h-full bg-stone-600"}
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ duration: autoPlayInterval / 1000, ease: "linear" }}
+                transition={{ duration: autoPlayInterval / 1000, ease: "linear" as const }}
               />
             </div>
           )}

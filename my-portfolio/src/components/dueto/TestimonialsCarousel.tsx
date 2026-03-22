@@ -77,7 +77,7 @@ const slideVariants = {
   },
   exit: (dir: number) => ({
     opacity: 0, x: dir > 0 ? -40 : 40,
-    transition: { duration: 0.28, ease: "easeIn" },
+    transition: { duration: 0.28, ease: "easeIn" as const },
   }),
 };
 
@@ -211,7 +211,7 @@ export default function TestimonialsCarousel({
                 className="h-full bg-[#D4A843]"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ duration: autoPlayInterval / 1000, ease: "linear" }}
+                transition={{ duration: autoPlayInterval / 1000, ease: "linear" as const }}
               />
             </div>
 

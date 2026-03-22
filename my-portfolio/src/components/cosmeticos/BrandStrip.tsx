@@ -139,7 +139,7 @@ export default function BrandStrip({
             x: {
               duration: 28,
               repeat: Infinity,
-              ease: "linear",
+              ease: "linear" as const,
               repeatType: "loop",
             },
           }}

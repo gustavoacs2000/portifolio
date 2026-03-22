@@ -59,7 +59,7 @@ const backdropVariants = {
 const lightboxVariants = {
   hidden:  { opacity: 0, scale: 0.93 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const } },
-  exit:    { opacity: 0, scale: 0.96, transition: { duration: 0.22, ease: "easeIn" } },
+  exit:    { opacity: 0, scale: 0.96, transition: { duration: 0.22, ease: "easeIn" as const } },
 };
 
 const slideVariants = {
