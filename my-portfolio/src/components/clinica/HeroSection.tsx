@@ -18,7 +18,7 @@ const containerVariants = {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const fadeIn = {
@@ -28,7 +28,7 @@ const fadeIn = {
 
 const badgeFade = {
   hidden: { opacity: 0, x: -12 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 function TrustBadge({ icon: Icon, value, label, theme }: {
@@ -137,7 +137,7 @@ export default function HeroSection({ theme = "light" }: HeroProps) {
           <motion.div style={{ y: imageY }} className="absolute inset-0 scale-[1.08]">
             <Image src="/images/clinica/hero-doctor.jpg" alt="Médica especialista em estética atendendo paciente na clínica" fill priority sizes="(max-width: 1024px) 100vw, 52vw" className="object-cover object-center" placeholder="blur" blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUE/8QAIhAAAQQBBAMAAAAAAAAAAAAAAQIDBBEFEiExQWH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Apz1xms6fX0aSY5KmMuIW3HbVylBWjj7IHIOc4A9UVFZs6Q7UJSGWEpHoK//Z" />
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20, x: 20 }} animate={{ opacity: 1, y: 0, x: 0 }} transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className={`absolute bottom-10 right-6 z-20 flex items-center gap-3 px-4 py-3 rounded-2xl border backdrop-blur-md shadow-xl max-w-[240px] ${isDark ? "bg-white/8 border-white/12 text-white" : "bg-white/90 border-white text-stone-800 shadow-stone-200/80"}`}>
+          <motion.div initial={{ opacity: 0, y: 20, x: 20 }} animate={{ opacity: 1, y: 0, x: 0 }} transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }} className={`absolute bottom-10 right-6 z-20 flex items-center gap-3 px-4 py-3 rounded-2xl border backdrop-blur-md shadow-xl max-w-[240px] ${isDark ? "bg-white/8 border-white/12 text-white" : "bg-white/90 border-white text-stone-800 shadow-stone-200/80"}`}>
             <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0">
               <div className="w-full h-full" style={{ background: isDark ? "linear-gradient(135deg, #3a3022, #5a4a2a)" : "linear-gradient(135deg, #e8d5b0, #c9a96e)" }} />
             </div>

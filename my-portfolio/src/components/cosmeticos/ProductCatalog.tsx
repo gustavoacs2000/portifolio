@@ -142,7 +142,7 @@ const gridVariants = {
 
 const cardVariants = {
   hidden:  { opacity: 0, y: 20, scale: 0.97 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
   exit:    { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
 };
 
@@ -321,7 +321,7 @@ export default function ProductCatalog({
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
           className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6"
         >
           <div>
@@ -366,7 +366,7 @@ export default function ProductCatalog({
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
           className="flex flex-wrap gap-2 mb-10"
           role="tablist"
           aria-label="Filtrar por categoria"

@@ -20,7 +20,7 @@ const containerVariants = {
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 26 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const fadeIn = {
@@ -30,7 +30,7 @@ const fadeIn = {
 
 const slideRight = {
   hidden:  { opacity: 0, x: 32 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -297,7 +297,7 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 1.0, duration: 0.65, ease: [0.22, 1, 0.36, 1] as const }}
             className={`absolute bottom-12 left-6 z-20 flex flex-col gap-1.5 px-5 py-4 rounded-xl border backdrop-blur-md max-w-[260px] ${
               isDark
                 ? "bg-white/6 border-white/10"

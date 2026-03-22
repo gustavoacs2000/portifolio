@@ -130,7 +130,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
     <motion.div
       variants={{
         hidden:  { opacity: 0, y: 18 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const } },
       }}
       className={`relative flex flex-col rounded-2xl border p-6 transition-colors duration-300 ${
         isFeatured
@@ -230,7 +230,7 @@ export default function TestimonialsGrid({ testimonials = DEFAULT_TESTIMONIALS }
 
   const fadeUp = {
     hidden:  { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.68, ease: [0.22, 1, 0.36, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.68, ease: [0.22, 1, 0.36, 1] as const } },
   };
 
   return (

@@ -327,7 +327,7 @@ export default function TestimonialsCarousel({
   // Slide variants
   const slideVariants = {
     enter: (d: number) => ({ opacity: 0, x: d > 0 ? 48 : -48 }),
-    center: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+    center: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
     exit: (d: number) => ({
       opacity: 0, x: d > 0 ? -48 : 48,
       transition: { duration: 0.35, ease: "easeIn" },
@@ -359,7 +359,7 @@ export default function TestimonialsCarousel({
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12"
         >
           {/* Left: title */}
@@ -430,7 +430,7 @@ export default function TestimonialsCarousel({
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] as const }}
         >
           {/* Desktop: 3 cards visible */}
           <div className="hidden lg:grid grid-cols-3 gap-5 relative overflow-hidden">

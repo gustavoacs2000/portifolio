@@ -93,7 +93,7 @@ const stepVariants = {
   }),
   center: {
     opacity: 1, x: 0,
-    transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const },
   },
   exit: (dir: number) => ({
     opacity: 0, x: dir > 0 ? -32 : 32,
@@ -105,7 +105,7 @@ const successVariants = {
   hidden:  { opacity: 0, scale: 0.88 },
   visible: {
     opacity: 1, scale: 1,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -594,7 +594,7 @@ export default function LeadForm({ theme = "dark", onSubmit }: LeadFormProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
           className="mb-10 text-center"
         >
           <p
@@ -633,7 +633,7 @@ export default function LeadForm({ theme = "dark", onSubmit }: LeadFormProps) {
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
           className={`rounded-2xl border overflow-hidden ${cardBg}`}
         >
           {/* ── Progress bar ── */}

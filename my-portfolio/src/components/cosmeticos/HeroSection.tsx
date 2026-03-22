@@ -20,7 +20,7 @@ const containerVariants = {
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const fadeIn = {
@@ -30,7 +30,7 @@ const fadeIn = {
 
 const slideRight = {
   hidden:  { opacity: 0, x: 32 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 function StatBadge({ icon: Icon, value, label }: { icon: React.ElementType; value: string; label: string }) {
@@ -130,14 +130,14 @@ export default function HeroSection({
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUE/8QAHhAAAQQCAwAAAAAAAAAAAAAAAQIDBAUREiEx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AqzWtnas6fXpaSYeM3LiuZiCeqiKD/9k=" />
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 20, y: -10 }} animate={{ opacity: 1, x: 0, y: 0 }} transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          <motion.div initial={{ opacity: 0, x: 20, y: -10 }} animate={{ opacity: 1, x: 0, y: 0 }} transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="absolute top-[15%] right-4 lg:right-0 z-20 bg-white rounded-2xl border border-rose-100 shadow-lg shadow-rose-100/50 px-4 py-3 max-w-[160px]">
             <p className="text-[9px] font-medium tracking-widest uppercase text-rose-400 mb-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>Novidade</p>
             <p className="text-xs font-medium text-stone-800 leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>Linha Reparadora Premium</p>
             <p className="text-[10px] text-stone-400 mt-0.5" style={{ fontFamily: "'DM Sans', sans-serif" }}>Disponível para pedido</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: -20, y: 10 }} animate={{ opacity: 1, x: 0, y: 0 }} transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          <motion.div initial={{ opacity: 0, x: -20, y: 10 }} animate={{ opacity: 1, x: 0, y: 0 }} transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="absolute bottom-[20%] left-4 lg:left-0 z-20 bg-stone-900 rounded-2xl px-4 py-3">
             <p className="text-[9px] font-medium tracking-widest uppercase text-rose-300 mb-0.5" style={{ fontFamily: "'DM Sans', sans-serif" }}>Revendedor</p>
             <p className="text-sm font-semibold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>Até 40% off</p>

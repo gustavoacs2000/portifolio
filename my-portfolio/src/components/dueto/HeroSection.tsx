@@ -20,7 +20,7 @@ const containerVariants = {
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 26 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const fadeIn = {
@@ -30,7 +30,7 @@ const fadeIn = {
 
 const slideLeft = {
   hidden:  { opacity: 0, x: 32 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 // ─── Staff notation SVG background ───────────────────────────────────────────
@@ -303,7 +303,7 @@ export default function HeroSection({
           <motion.div
             initial={{ opacity: 0, x: 20, y: -10 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 1.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="absolute top-[14%] right-2 lg:right-0 z-20 bg-white rounded-2xl border border-[#1A2E4A]/10 shadow-lg px-4 py-3"
           >
             <p
@@ -330,7 +330,7 @@ export default function HeroSection({
           <motion.div
             initial={{ opacity: 0, x: -20, y: 10 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 1.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="absolute bottom-[18%] left-2 lg:left-0 z-20 bg-[#1A2E4A] rounded-2xl px-4 py-3"
           >
             <p

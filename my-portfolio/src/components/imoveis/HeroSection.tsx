@@ -20,7 +20,7 @@ const containerVariants = {
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const fadeIn = {
@@ -273,7 +273,7 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
       <motion.div
         initial={{ opacity: 0, x: 16 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
         className="absolute top-24 right-6 lg:right-12 z-20 hidden sm:flex flex-col items-end gap-1"
       >
         <div
