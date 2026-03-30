@@ -18,7 +18,7 @@ interface DuetoTestimonial {
   body: string;
   author: string;
   role: string;
-  since?: string;
+  since: string;
   rating: number;
 }
 
