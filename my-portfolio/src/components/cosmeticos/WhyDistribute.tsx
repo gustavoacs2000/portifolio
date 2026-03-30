@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Percent, Truck, HeadphonesIcon, Award, RefreshCw, Users } from "lucide-react";
+import { contactConfig } from "@/lib/contact-config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -122,7 +123,7 @@ function BenefitCard({ benefit }: { benefit: Benefit }) {
 
 // ─── Main section ─────────────────────────────────────────────────────────────
 
-export default function WhyDistribute({ whatsappNumber = "5561999999999" }: WhyDistributeProps) {
+export default function WhyDistribute({ whatsappNumber = contactConfig.cosmeticos.whatsapp.number }: WhyDistributeProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 

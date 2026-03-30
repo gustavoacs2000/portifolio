@@ -7,7 +7,6 @@ import { ArrowRight, Sparkles, Package, Users } from "lucide-react";
 interface HeroProps {
   representativeName?: string;
   representativeTitle?: string;
-  headline?: string;
   subheadline?: string;
   heroImageSrc?: string;
   heroImageAlt?: string;
@@ -50,7 +49,6 @@ function StatBadge({ icon: Icon, value, label }: { icon: React.ElementType; valu
 export default function HeroSection({
   representativeName = "Isabela Monteiro",
   representativeTitle = "Representante Comercial de Cosméticos",
-  headline = "Leve as melhores marcas para o seu negócio.",
   subheadline = "Distribuidora exclusiva de marcas premium de beleza para salões, clínicas e revendedores em todo o DF e entorno. Condições especiais, suporte técnico e entrega rápida.",
   heroImageSrc = "/images/cosmeticos/hero-products.png",
   heroImageAlt = "Linha de produtos cosméticos premium",

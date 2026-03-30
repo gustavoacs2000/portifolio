@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Star, MapPin, Phone, Instagram } from "lucide-react";
+import { ArrowUpRight, Star, MapPin, Phone, Camera } from "lucide-react";
+import { contactConfig } from "@/lib/contact-config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -114,8 +115,8 @@ export default function AgentProfile({
   reviewCount = 148,
   imageSrc = "/images/imoveis/agent-profile.png",
   imageAlt = "Bruno Lacerda — Corretor de Imóveis de Luxo em Brasília",
-  phone = "(61) 9 9999-9999",
-  instagram = "@brunolacerda.imoveis",
+  phone = contactConfig.imoveis.agent.phoneDisplay,
+  instagram = contactConfig.imoveis.agent.instagramHandle,
   ctaHref = "#contato",
 }: AgentProfileProps) {
   const isDark = theme === "dark";
@@ -199,7 +200,7 @@ export default function AgentProfile({
                   className={`flex items-center gap-1.5 text-xs transition-colors ${
                     isDark ? "text-white/40 hover:text-white/70" : "text-stone-400 hover:text-stone-600"
                   }`} style={{ fontFamily: "'Inter', sans-serif" }}>
-                  <Instagram size={13} />{instagram}
+                  <Camera size={13} />{instagram}
                 </a>
               )}
             </motion.div>

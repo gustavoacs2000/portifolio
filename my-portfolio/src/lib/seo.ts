@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildWhatsAppHref, contactConfig } from "@/lib/contact-config";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://seudominio.com.br";
 
@@ -59,7 +60,7 @@ export function clinicaJsonLd() {
     name: "Clínica Estética & Medicina",
     description: "Clínica de medicina estética em Brasília. Protocolos personalizados com tecnologia de ponta.",
     url: `${BASE_URL}/clinica`,
-    telephone: "+55-61-3333-4444",
+    telephone: contactConfig.clinica.seoTelephone,
     image: `${BASE_URL}/images/clinica/hero-doctor.jpg`,
     address: {
       "@type": "PostalAddress",
@@ -98,7 +99,7 @@ export function advocaciaJsonLd() {
     name: "Mendonça & Associados Advocacia Corporativa",
     description: "Escritório de advocacia corporativa em Brasília. Especialistas em M&A, contratos e contencioso estratégico.",
     url: `${BASE_URL}/advocacia`,
-    telephone: "+55-61-3222-5555",
+    telephone: contactConfig.advocacia.seoTelephone,
     image: `${BASE_URL}/images/advocacia/hero-office.jpg`,
     foundingDate: "2002",
     address: {
@@ -147,8 +148,8 @@ export function imoveisJsonLd() {
     name: "Bruno Lacerda — Imóveis de Luxo Brasília",
     description: "Corretor de imóveis de alto padrão em Brasília. Especialista em Lago Sul, Sudoeste e Park Way. CRECI/DF 12.345-F.",
     url: `${BASE_URL}/imoveis`,
-    telephone: "+55-61-9-9999-9999",
-    image: `${BASE_URL}/images/imoveis/agent-profile.jpg`,
+    telephone: contactConfig.imoveis.seoTelephone,
+    image: `${BASE_URL}/images/imoveis/agent-profile.png`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Brasília",
@@ -198,8 +199,8 @@ export function cosmeticosJsonLd() {
     description:
       "Representante exclusiva de marcas premium de beleza para salões, clínicas e revendedores no DF. L'Oréal, Wella, Kérastase, La Roche-Posay e mais.",
     url: `${BASE_URL}/cosmeticos`,
-    telephone: "+55-61-9-9999-9999",
-    image: `${BASE_URL}/images/cosmeticos/representative-profile.jpg`,
+    telephone: contactConfig.cosmeticos.seoTelephone,
+    image: `${BASE_URL}/images/cosmeticos/representative-profile.png`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Brasília",
@@ -232,44 +233,73 @@ export function duetoJsonLd() {
     "@context": "https://schema.org",
     "@type": "MusicSchool",
     "@id": `${BASE_URL}/dueto`,
-    name: "Dueto Academia de Música",
+    name: "Dueto Academia de Musica",
     description:
-      "Escola de violino em Brasília com aulas individuais, turmas infantis e para adultos. Professores Rafael Duarte e Ana Clara Mendes.",
+      "Escola de musica no Guara, DF, com aulas de violino, viola de arco, violoncelo, violao e piano para criancas e adultos.",
     url: `${BASE_URL}/dueto`,
-    telephone: "+55-61-9-9999-9999",
-    image: `${BASE_URL}/images/dueto/hero-teachers.jpg`,
+    telephone: contactConfig.dueto.seoTelephone,
+    email: contactConfig.dueto.email,
+    image:
+      "https://lh3.googleusercontent.com/sitesv/APaQ0STzxEmC0NIWifX_iblzzXWP8dAmtIkRezOKBMyaXJpO_jr2zlyxLmKjXK_z1hmbTPHFrJTXoxFo1sliIY71JInERnLo725Z3fbnX1FtcG07t6OxuSLrf3_ZaRZtQbAaWQ0wfV_lgO0IyrgMOM2yleLnaBAKktIozcXVDMC9wc9sj6G7U0Zv2QXYjJY=w16383",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Brasília",
+      streetAddress: "QI 25, Bloco A, Edificio Real Mix, Cobertura 5",
+      addressLocality: "Guara",
       addressRegion: "DF",
+      postalCode: "71060-263",
       addressCountry: "BR",
     },
-    founder: [
-      { "@type": "Person", name: "Rafael Duarte" },
-      { "@type": "Person", name: "Ana Clara Mendes" },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -15.8359045,
+      longitude: -47.9787796,
+    },
+    areaServed: [
+      { "@type": "City", name: "Guara" },
+      { "@type": "City", name: "Brasilia" },
+      { "@type": "AdministrativeArea", name: "Distrito Federal" },
+    ],
+    sameAs: [
+      contactConfig.dueto.instagramUrl,
+      buildWhatsAppHref(contactConfig.dueto.whatsapp.number),
+      "https://www.google.com/maps/place/Dueto+Academia+de+M%C3%BAsica/data=!4m7!3m6!1s0x935a3367f5e8d41f:0x1f1a1f4d09e38497!8m2!3d-15.8359045!4d-47.9787796!16s%2Fg%2F11ptmc9m53!19sChIJH9To9WczWpMRl4TjCU0fGh8?hl=pt-BR&rclk=1",
+    ],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "19:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "08:00",
+        closes: "16:00",
+      },
     ],
     knowsAbout: [
       "Violino",
-      "Música Clássica",
-      "Método Suzuki",
-      "Musicalização Infantil",
-      "Conservatório",
+      "Viola de Arco",
+      "Violoncelo",
+      "Violao",
+      "Piano",
+      "Aulas Individuais",
+      "Aulas Coletivas",
+      "Musica para Criancas",
+      "Musica para Adultos",
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: 5.0,
-      reviewCount: 200,
-      bestRating: 5,
-      worstRating: 1,
-    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Modalidades",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aula Individual de Violino" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Turma Infantil" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Adultos Iniciantes" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nível Avançado" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas de Violino" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas de Viola de Arco" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas de Violoncelo" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas de Violao" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas de Piano" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas Individuais" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aulas Coletivas" } },
       ],
     },
   };

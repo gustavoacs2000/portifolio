@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, clinicaJsonLd } from "@/lib/seo";
+import { contactConfig } from "@/lib/contact-config";
 
 import HeroSection          from "@/components/clinica/HeroSection";
 import ServicesGrid         from "@/components/clinica/ServicesGrid";
@@ -28,10 +29,10 @@ export default function ClinicaPage() {
       <TestimonialsCarousel theme="dark" />
       <ResultsGallery theme="light" />
       <FloatingCTA
-        whatsappNumber="5561999999999"
-        whatsappMessage="Olá! Vi o site e gostaria de agendar uma consulta."
-        phoneNumber="6133334444"
-        bookingUrl="#agendamento"
+        whatsappNumber={contactConfig.clinica.floatingCta.whatsappNumber}
+        whatsappMessage={contactConfig.clinica.floatingCta.whatsappMessage}
+        phoneNumber={contactConfig.clinica.floatingCta.phoneNumber}
+        bookingUrl={contactConfig.clinica.floatingCta.bookingUrl}
         theme="dark"
       />
     </>

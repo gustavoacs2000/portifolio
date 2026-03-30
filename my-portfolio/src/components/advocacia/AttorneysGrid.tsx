@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Linkedin } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
+import { contactConfig } from "@/lib/contact-config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -37,7 +38,7 @@ const DEFAULT_ATTORNEYS: Attorney[] = [
     bio: "Ex-conselheiro do CADE. 28 anos de atuação em operações estruturadas de alto valor.",
     imageSrc: "/images/advocacia/attorney-carlos.jpg",
     imageAlt: "Dr. Carlos Mendonça — Sócio Fundador",
-    linkedinUrl: "#",
+    linkedinUrl: contactConfig.advocacia.attorneysLinkedin.carlos,
     featured: true,
   },
   {
@@ -49,7 +50,7 @@ const DEFAULT_ATTORNEYS: Attorney[] = [
     bio: "Especialista em direito regulatório com passagem pela ANATEL e ANCINE.",
     imageSrc: "/images/advocacia/attorney-ana.jpg",
     imageAlt: "Dra. Ana Beatriz Leal — Sócia",
-    linkedinUrl: "#",
+    linkedinUrl: contactConfig.advocacia.attorneysLinkedin.ana,
   },
   {
     id: "rafael",
@@ -60,7 +61,7 @@ const DEFAULT_ATTORNEYS: Attorney[] = [
     bio: "Atuação em tribunais superiores com 94% de êxito em mandatos de alta complexidade.",
     imageSrc: "/images/advocacia/attorney-rafael.jpg",
     imageAlt: "Dr. Rafael Drummond — Sócio",
-    linkedinUrl: "#",
+    linkedinUrl: contactConfig.advocacia.attorneysLinkedin.rafael,
   },
   {
     id: "julia",
@@ -71,7 +72,7 @@ const DEFAULT_ATTORNEYS: Attorney[] = [
     bio: "Ex-conselheira do CARF. Referência em planejamento tributário para grupos econômicos.",
     imageSrc: "/images/advocacia/attorney-julia.jpg",
     imageAlt: "Dra. Júlia Fonseca — Of Counsel",
-    linkedinUrl: "#",
+    linkedinUrl: contactConfig.advocacia.attorneysLinkedin.julia,
   },
 ];
 
@@ -196,7 +197,7 @@ function AttorneyCard({
             aria-label={`LinkedIn de ${attorney.name}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <Linkedin size={12} />
+            <BriefcaseBusiness size={12} />
           </a>
         )}
       </div>

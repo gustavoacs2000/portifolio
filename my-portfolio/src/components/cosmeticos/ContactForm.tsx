@@ -3,6 +3,7 @@
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useCallback, useRef } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle, MessageSquare } from "lucide-react";
+import { contactConfig } from "@/lib/contact-config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -105,7 +106,7 @@ const inputCls = (hasError?: boolean) =>
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ContactForm({
-  whatsappNumber = "5561999999999",
+  whatsappNumber = contactConfig.cosmeticos.whatsapp.number,
   onSubmit,
 }: ContactFormProps) {
   const ref = useRef<HTMLElement>(null);

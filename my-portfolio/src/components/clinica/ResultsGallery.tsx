@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
-import { useRef, useState, useCallback, useEffect, useId } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { ArrowUpRight, MoveHorizontal } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -78,7 +78,6 @@ function RevealCard({
   priority?: boolean;
 }) {
   const isDark = theme === "dark";
-  const uid = useId();
 
   // Reveal position: 0 = full before, 1 = full after. Start at 50%.
   const [revealPct, setRevealPct] = useState(50);
@@ -86,6 +85,10 @@ function RevealCard({
   const [hasInteracted, setHasInteracted] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const dragHandlersRef = useRef<{
+    move?: (event: PointerEvent) => void;
+    up?: () => void;
+  }>({});
 
   // ── Pointer/drag logic ────────────────────────────────────────────────────
 
@@ -98,29 +101,26 @@ function RevealCard({
     return clamp(((clientX - left) / width) * 100, 2, 98);
   }, []);
 
-  const onPointerMove = useCallback(
-    (e: PointerEvent) => {
-      if (!isDragging) return;
-      setRevealPct(getX(e.clientX));
-    },
-    [isDragging, getX]
-  );
-
-  const onPointerUp = useCallback(() => {
+  const stopDragging = useCallback(() => {
+    const { move, up } = dragHandlersRef.current;
+    if (move) window.removeEventListener("pointermove", move);
+    if (up) window.removeEventListener("pointerup", up);
+    dragHandlersRef.current = {};
     setIsDragging(false);
-    window.removeEventListener("pointermove", onPointerMove);
-    window.removeEventListener("pointerup",   onPointerUp);
-  }, [onPointerMove]);
+  }, []);
 
   const startDrag = useCallback(
     (clientX: number) => {
       setIsDragging(true);
       setHasInteracted(true);
       setRevealPct(getX(clientX));
-      window.addEventListener("pointermove", onPointerMove);
-      window.addEventListener("pointerup",   onPointerUp);
+      const move = (event: PointerEvent) => setRevealPct(getX(event.clientX));
+      const up = () => stopDragging();
+      dragHandlersRef.current = { move, up };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", up);
     },
-    [getX, onPointerMove, onPointerUp]
+    [getX, stopDragging]
   );
 
   // Touch
@@ -139,10 +139,7 @@ function RevealCard({
     if (e.key === "ArrowRight") { setRevealPct((p) => clamp(p + 5, 2, 98)); setHasInteracted(true); }
   }, []);
 
-  useEffect(() => () => {
-    window.removeEventListener("pointermove", onPointerMove);
-    window.removeEventListener("pointerup",   onPointerUp);
-  }, [onPointerMove, onPointerUp]);
+  useEffect(() => () => stopDragging(), [stopDragging]);
 
   // ── Styles ────────────────────────────────────────────────────────────────
 
@@ -155,7 +152,6 @@ function RevealCard({
     ? "bg-amber-400/10 text-amber-300 border-amber-500/20"
     : "bg-amber-50 text-amber-700 border-amber-200";
   const metaColor   = isDark ? "text-white/38"  : "text-stone-400";
-  const titleColor  = isDark ? "text-white/85"  : "text-stone-800";
 
   return (
     <div

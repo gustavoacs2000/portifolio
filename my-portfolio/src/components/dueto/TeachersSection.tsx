@@ -5,8 +5,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, Music, Award, GraduationCap, Mic2 } from "lucide-react";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 export interface Teacher {
   id: string;
   name: string;
@@ -23,78 +21,145 @@ interface TeachersSectionProps {
   teachers?: Teacher[];
 }
 
-// ─── Default data ─────────────────────────────────────────────────────────────
-
 const DEFAULT_TEACHERS: Teacher[] = [
   {
-    id: "rafael",
-    name: "Rafael Oliveira",
+    id: "guilherme",
+    name: "Guilherme Alexander",
     instrument: "Violino",
-    role: "Co-fundador · Professor",
+    role: "Socio e Professor de Violino",
     bio: [
-      "Formado pelo Conservatório Carlos Gomes de Belém, Rafael se especializou em música de câmara e performance solo em São Paulo antes de fundar a Dueto em Brasília.",
-      "Com mais de 15 anos de experiência em palco — incluindo apresentações no Theatro Municipal de São Paulo e na Sala Martins Pena em Brasília — traz para as aulas a vivência real de um músico em atividade.",
+      "Professor integrante da equipe da Dueto Academia de Musica.",
+      "Release profissional em breve.",
     ],
     credentials: [
-      { icon: "graduation", text: "Conservatório Carlos Gomes — Bacharelado em Violino" },
-      { icon: "award",      text: "Pós-graduação em Pedagogia Musical — USP" },
-      { icon: "music",      text: "15+ anos de performance em câmara e solo" },
-      { icon: "mic",        text: "Apresentações no Theatro Municipal — SP" },
+      { icon: "music", text: "Professor de violino" },
+      { icon: "award", text: "Socio da Dueto Academia" },
+      { icon: "mic", text: "Release em breve" },
     ],
-    imageSrc: "/images/dueto/teacher-rafael.png",
-    imageAlt: "Rafael Oliveira — professor de violino da Dueto Academia de Música",
-    featuredQuote: "Ensinar violino é transmitir uma linguagem que não tem fronteiras.",
+    imageSrc: "/images/dueto/teacher-guilherme.jpeg",
+    imageAlt: "Guilherme Alexander, professor de violino",
   },
   {
-    id: "ana",
-    name: "Ana Clara Fontes",
+    id: "jordana",
+    name: "Jordana Rodrigues",
     instrument: "Violino",
-    role: "Co-fundadora · Professora",
+    role: "Socia e Professora de Violino",
     bio: [
-      "Ana Clara é violinista e educadora musical formada pela Escola de Música de Brasília com especialização em música para a infância e método Suzuki pela ABM.",
-      "Desenvolveu metodologia própria que une técnica clássica com repertório contemporâneo, tornando o aprendizado mais acessível e prazeroso para todas as idades.",
+      "Professora integrante da equipe da Dueto Academia de Musica.",
+      "Release profissional em breve.",
     ],
     credentials: [
-      { icon: "graduation", text: "Escola de Música de Brasília — Bacharelado em Violino" },
-      { icon: "award",      text: "Certificação Suzuki — ABM" },
-      { icon: "music",      text: "Especialista em musicalização infantil" },
-      { icon: "mic",        text: "Recitais no Centro Cultural Banco do Brasil — DF" },
+      { icon: "music", text: "Professora de violino" },
+      { icon: "award", text: "Socia da Dueto Academia" },
+      { icon: "mic", text: "Release em breve" },
     ],
-    imageSrc: "/images/dueto/teacher-ana.png",
-    imageAlt: "Ana Clara Fontes — professora de violino da Dueto Academia de Música",
-    featuredQuote: "Cada aluno aprende de um jeito único. Meu trabalho é encontrar o caminho de cada um.",
+    imageSrc: "/images/dueto/teacher-jordana.jpeg",
+    imageAlt: "Jordana Rodrigues, professora de violino",
+  },
+  {
+    id: "gabriel",
+    name: "Gabriel Mendes",
+    instrument: "Violino",
+    role: "Professor de Violino",
+    bio: [
+      "Professor da equipe da Dueto Academia de Musica.",
+      "Release profissional em breve.",
+    ],
+    credentials: [
+      { icon: "music", text: "Professor de violino" },
+      { icon: "award", text: "Equipe Dueto" },
+      { icon: "mic", text: "Release em breve" },
+    ],
+    imageSrc: "/images/dueto/teacher-gabriel.jpeg",
+    imageAlt: "Gabriel Mendes, professor de violino",
+  },
+  {
+    id: "lucas",
+    name: "Lucas Rezende",
+    instrument: "Violao",
+    role: "Professor de Violao",
+    bio: [
+      "Professor de violao com quase 20 anos de experiencia no instrumento, dedicado a ensinar alunos de todas as idades, de criancas a adultos.",
+      "Cursou Licenciatura em Musica pela UnB e violao erudito pela Escola de Musica de Brasilia. Sua abordagem une base tecnica solida e pratica musical desde o inicio.",
+    ],
+    credentials: [
+      { icon: "graduation", text: "Licenciatura em Musica pela UnB" },
+      { icon: "award", text: "Formacao em violao erudito na Escola de Musica de Brasilia" },
+      { icon: "music", text: "Quase 20 anos de experiencia no instrumento" },
+      { icon: "mic", text: "Aulas personalizadas para criancas e adultos" },
+    ],
+    imageSrc: "/images/dueto/teacher-lucas.jpeg",
+    imageAlt: "Lucas Rezende, professor de violao",
+    featuredQuote: "Meu objetivo e que o aluno toque sua primeira musica ja na primeira aula.",
+  },
+  {
+    id: "hellen",
+    name: "Hellen Alvares",
+    instrument: "Violoncelo",
+    role: "Professora de Violoncelo",
+    bio: [
+      "Educadora musical e violoncelista, atuante em Brasilia-DF, com experiencia no ensino coletivo de cordas e em projetos culturais para criancas, jovens e adultos.",
+      "Licencianda em Musica pelo Claretiano Centro Universitario, aluna da Escola de Musica de Brasilia e com participacao na Academia Claude Brendel e Brasilia Cello Academia.",
+    ],
+    credentials: [
+      { icon: "graduation", text: "Licencianda em Musica pelo Claretiano Centro Universitario" },
+      { icon: "award", text: "Aluna da Escola de Musica de Brasilia" },
+      { icon: "music", text: "Atuacao em projetos sociais e educacionais" },
+      { icon: "mic", text: "Participacao na Academia Claude Brendel e Brasilia Cello Academia" },
+    ],
+    imageSrc: "/images/dueto/teacher-hellen.jpeg",
+    imageAlt: "Hellen Alvares, professora de violoncelo",
+  },
+  {
+    id: "alfredo",
+    name: "Alfredo Siqueira",
+    instrument: "Piano",
+    role: "Professor de Piano",
+    bio: [
+      "Natural do Mato Grosso do Sul, Alfredo Ericeira e graduado em Musica (Licenciatura) pela UFMS e mestre em Musica com enfase em Regencia pela UnB.",
+      "Pianista e professor de piano ha mais de 20 anos, tambem atua como maestro, compositor e arranjador, com mais de 100 criacoes e forte atuacao em preparacao de alunos para a Escola de Musica de Brasilia.",
+    ],
+    credentials: [
+      { icon: "graduation", text: "Graduado em Musica pela UFMS" },
+      { icon: "award", text: "Mestre em Musica (Regencia) pela UnB" },
+      { icon: "music", text: "Professor de piano ha mais de 20 anos" },
+      { icon: "mic", text: "Maestro, compositor e arranjador com mais de 100 criacoes" },
+    ],
+    imageSrc: "/images/dueto/teacher-alfredo.png",
+    imageAlt: "Alfredo Siqueira, professor de piano",
   },
 ];
 
-// ─── Icon map ─────────────────────────────────────────────────────────────────
-
 const ICON_MAP = { award: Award, graduation: GraduationCap, music: Music, mic: Mic2 };
 
-// ─── Animation variants ───────────────────────────────────────────────────────
-
 const fadeUp = {
-  hidden:  { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 22 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
-const fadeLeft  = { hidden: { opacity: 0, x: -28 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } } };
-const fadeRight = { hidden: { opacity: 0, x:  28 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } } };
+const fadeLeft = {
+  hidden: { opacity: 0, x: -28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
+};
 
-// ─── Teacher card ─────────────────────────────────────────────────────────────
+const fadeRight = {
+  hidden: { opacity: 0, x: 28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
+};
 
 function TeacherCard({ teacher, index, inView }: { teacher: Teacher; index: number; inView: boolean }) {
   const isLeft = index % 2 === 0;
+  const contentToneClass = index % 2 === 0 ? "bg-[#2A5A8A]" : "bg-[#163B61]";
 
   return (
     <motion.div
       variants={isLeft ? fadeLeft : fadeRight}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className={`grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden border border-white/6 ${
+      className={`grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden border border-white/15 shadow-[0_18px_45px_-22px_rgba(8,18,33,0.75)] ${
         isLeft ? "" : "lg:[direction:rtl]"
       }`}
     >
-      {/* Photo */}
       <div className="relative overflow-hidden lg:[direction:ltr]" style={{ aspectRatio: "3/4" }}>
         <Image
           src={teacher.imageSrc}
@@ -103,31 +168,38 @@ function TeacherCard({ teacher, index, inView }: { teacher: Teacher; index: numb
           loading="lazy"
           sizes="(max-width: 1024px) 100vw, 40vw"
           className="object-cover object-top"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUE/8QAHhAAAQQCAwAAAAAAAAAAAAAAAQIDBAUREiEx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AqzWtnas6fXpaSYeM3LiuZiCeqiKD/9k="
         />
-        <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-          style={{ background: "linear-gradient(to top, rgba(15,24,32,0.88), transparent)" }} />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+          style={{ background: "linear-gradient(to top, rgba(15,24,32,0.88), transparent)" }}
+        />
         <div className="absolute bottom-5 left-5 right-5 z-10 lg:[direction:ltr]">
-          <p className="text-white font-normal text-xl leading-tight"
-            style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.03em" }}>
+          <p
+            className="text-white font-normal text-xl leading-tight"
+            style={{ fontFamily: "var(--font-cormorant-sc), serif", letterSpacing: "0.03em" }}
+          >
             {teacher.name}
           </p>
-          <p className="text-[#D4A843]/65 text-[10px] mt-1"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            {teacher.instrument} · {teacher.role}
+          <p className="text-white/70 text-[10px] mt-1" style={{ fontFamily: "var(--font-libre-baskerville), serif" }}>
+            {teacher.instrument} Â· {teacher.role}
           </p>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col p-7 lg:p-8 lg:[direction:ltr]">
+      <div className={`flex flex-col p-7 lg:p-8 lg:[direction:ltr] ${contentToneClass}`}>
         {teacher.featuredQuote && (
           <div className="mb-6">
-            <span className="text-4xl text-[#D4A843]/18 font-normal leading-none"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }} aria-hidden="true">"</span>
-            <p className="text-white/72 text-base leading-relaxed -mt-2 italic"
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}>
+            <span
+              className="text-4xl text-white/18 font-normal leading-none"
+              style={{ fontFamily: "var(--font-cormorant-sc), serif" }}
+              aria-hidden="true"
+            >
+              {"\""}
+            </span>
+            <p
+              className="text-white/72 text-base leading-relaxed -mt-2 italic"
+              style={{ fontFamily: "var(--font-cormorant-sc), serif", fontWeight: 400 }}
+            >
               {teacher.featuredQuote}
             </p>
           </div>
@@ -137,26 +209,26 @@ function TeacherCard({ teacher, index, inView }: { teacher: Teacher; index: numb
 
         <div className="flex flex-col gap-4 flex-1 mb-6">
           {teacher.bio.map((p, i) => (
-            <p key={i} className="text-sm leading-relaxed text-white/46"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <p key={i} className="text-sm leading-relaxed text-white/46" style={{ fontFamily: "var(--font-libre-baskerville), serif" }}>
               {p}
             </p>
           ))}
         </div>
 
-        <div className="rounded-xl border border-white/6 bg-white/[0.03] p-4 mb-6">
-          <p className="text-[9px] font-semibold tracking-widest uppercase text-white/20 mb-3"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Formação & experiência
+        <div className="rounded-xl border border-white/10 bg-white/[0.07] p-4 mb-6">
+          <p
+            className="text-[9px] font-semibold tracking-widest uppercase text-white/20 mb-3"
+            style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
+          >
+            Formacao e experiencia
           </p>
           <div className="flex flex-col gap-3">
             {teacher.credentials.map((cred, i) => {
               const Icon = ICON_MAP[cred.icon];
               return (
                 <div key={i} className="flex items-start gap-2.5">
-                  <Icon size={12} className="text-[#D4A843]/45 shrink-0 mt-0.5" />
-                  <span className="text-xs text-white/58 leading-relaxed"
-                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  <Icon size={12} className="text-white/45 shrink-0 mt-0.5" />
+                  <span className="text-xs text-white/58 leading-relaxed" style={{ fontFamily: "var(--font-libre-baskerville), serif" }}>
                     {cred.text}
                   </span>
                 </div>
@@ -165,9 +237,11 @@ function TeacherCard({ teacher, index, inView }: { teacher: Teacher; index: numb
           </div>
         </div>
 
-        <a href="#matricula"
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#D4A843]/65 hover:text-[#D4A843] transition-colors duration-200 group"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <a
+          href="#matricula"
+          className="inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 group"
+          style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
+        >
           Agendar aula com {teacher.name.split(" ")[0]}
           <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
         </a>
@@ -176,8 +250,6 @@ function TeacherCard({ teacher, index, inView }: { teacher: Teacher; index: numb
   );
 }
 
-// ─── Main section ─────────────────────────────────────────────────────────────
-
 export default function TeachersSection({ teachers = DEFAULT_TEACHERS }: TeachersSectionProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -185,70 +257,82 @@ export default function TeachersSection({ teachers = DEFAULT_TEACHERS }: Teacher
   return (
     <section
       ref={ref}
-      className="relative w-full bg-[#0F1820] py-24 lg:py-32 overflow-hidden"
+      className="relative w-full bg-[#1D4570] py-24 lg:py-32 overflow-hidden"
       aria-labelledby="teachers-heading"
     >
-      {/* Glows */}
-      <div className="pointer-events-none absolute top-0 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-12"
-        style={{ background: "radial-gradient(circle, #1A2E4A 0%, transparent 65%)" }} aria-hidden="true" />
-      <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] translate-x-1/3 translate-y-1/3 rounded-full opacity-10"
-        style={{ background: "radial-gradient(circle, #C8A878 0%, transparent 65%)" }} aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute top-0 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-12"
+        style={{ background: "radial-gradient(circle, #1D4570 0%, transparent 65%)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] translate-x-1/3 translate-y-1/3 rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #1D4570 0%, transparent 65%)" }}
+        aria-hidden="true"
+      />
 
-      {/* Staff lines on dark */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: "repeating-linear-gradient(180deg, transparent, transparent 38px, rgba(255,255,255,0.5) 38px, rgba(255,255,255,0.5) 39px, transparent 39px, transparent 48px, rgba(255,255,255,0.5) 48px, rgba(255,255,255,0.5) 49px, transparent 49px, transparent 58px, rgba(255,255,255,0.5) 58px, rgba(255,255,255,0.5) 59px, transparent 59px, transparent 68px, rgba(255,255,255,0.5) 68px, rgba(255,255,255,0.5) 69px, transparent 69px, transparent 78px, rgba(255,255,255,0.5) 78px, rgba(255,255,255,0.5) 79px, transparent 79px, transparent 130px)",
-        }} aria-hidden="true" />
+          backgroundImage:
+            "repeating-linear-gradient(180deg, transparent, transparent 38px, rgba(255,255,255,0.5) 38px, rgba(255,255,255,0.5) 39px, transparent 39px, transparent 48px, rgba(255,255,255,0.5) 48px, rgba(255,255,255,0.5) 49px, transparent 49px, transparent 58px, rgba(255,255,255,0.5) 58px, rgba(255,255,255,0.5) 59px, transparent 59px, transparent 68px, rgba(255,255,255,0.5) 68px, rgba(255,255,255,0.5) 69px, transparent 69px, transparent 78px, rgba(255,255,255,0.5) 78px, rgba(255,255,255,0.5) 79px, transparent 79px, transparent 130px)",
+        }}
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-
-        {/* Header */}
-        <motion.div initial="hidden" animate={inView ? "visible" : "hidden"}
-          className="mb-16 text-center">
-          <motion.p variants={fadeUp}
-            className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#D4A843]/55 flex items-center justify-center gap-2 mb-5"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            <span className="w-5 h-px bg-[#D4A843]/30 inline-block" />
-            Os professores
-            <span className="w-5 h-px bg-[#D4A843]/30 inline-block" />
+        <motion.div initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-16 text-center">
+          <motion.p
+            variants={fadeUp}
+            className="text-[10px] font-medium tracking-[0.2em] uppercase text-white/65 flex items-center justify-center gap-2 mb-5"
+            style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
+          >
+            <span className="w-5 h-px bg-white/30 inline-block" />
+            Professores
+            <span className="w-5 h-px bg-white/30 inline-block" />
           </motion.p>
 
-          <motion.h2 id="teachers-heading" variants={fadeUp}
+          <motion.h2
+            id="teachers-heading"
+            variants={fadeUp}
             className="font-normal leading-[1.06] tracking-tight text-white mb-5"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 400 }}>
-            Conheça quem vai{" "}
-            <em className="italic font-normal text-[#D4A843]/75"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              guiar sua jornada
-            </em>
+            style={{ fontFamily: "var(--font-cormorant-sc), serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 400 }}
+          >
+            Conheca a equipe da Dueto
           </motion.h2>
 
-          <motion.p variants={fadeUp}
+          <motion.p
+            variants={fadeUp}
             className="text-sm text-white/38 leading-relaxed max-w-lg mx-auto"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Violinistas em atividade, com formação sólida e anos de palco.
-            Na Dueto, você aprende com quem realmente vive a música.
+            style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
+          >
+            Equipe de professores da aba Professores da Dueto Academia,
+            com atuacao em violino, violao, violoncelo e piano.
           </motion.p>
         </motion.div>
 
-        {/* Cards */}
         <div className="flex flex-col gap-6">
           {teachers.map((teacher, index) => (
             <TeacherCard key={teacher.id} teacher={teacher} index={index} inView={inView} />
           ))}
         </div>
 
-        {/* Bottom note */}
-        <motion.p variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
           className="mt-12 text-center text-xs text-white/20"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          Ambos os professores estão disponíveis para aula experimental gratuita.{" "}
-          <a href="#matricula"
-            className="underline underline-offset-2 text-[#D4A843]/45 hover:text-[#D4A843] transition-colors">
-            Reserve a sua vaga
-          </a>.
+          style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
+        >
+          Nossa equipe esta empenhada em realizar seu sonho de tocar.{" "}
+          <a href="#matricula" className="underline underline-offset-2 text-white/60 hover:text-white transition-colors">
+            Esperamos voce
+          </a>
+          .
         </motion.p>
       </div>
     </section>
   );
 }
+
+

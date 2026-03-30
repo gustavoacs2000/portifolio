@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState, useCallback } from "react";
 import { ArrowUpRight, ShoppingBag, Star } from "lucide-react";
+import { contactConfig } from "@/lib/contact-config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -286,7 +287,7 @@ function ProductCard({
 
 export default function ProductCatalog({
   products = DEFAULT_PRODUCTS,
-  whatsappNumber = "5561999999999",
+  whatsappNumber = contactConfig.cosmeticos.whatsapp.number,
 }: ProductCatalogProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });

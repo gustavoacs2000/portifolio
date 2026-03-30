@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, advocaciaJsonLd } from "@/lib/seo";
+import { contactConfig } from "@/lib/contact-config";
 
 import HeroSection      from "@/components/advocacia/HeroSection";
 import PracticeAreas    from "@/components/advocacia/PracticeAreas";
@@ -28,10 +29,10 @@ export default function AdvocaciaPage() {
       <TestimonialsGrid theme="dark" />
       <LeadForm theme="dark" />
       <FloatingCTA
-        whatsappNumber="5561999999999"
-        whatsappMessage="Olá! Gostaria de agendar uma consulta jurídica."
-        phoneNumber="6133334444"
-        bookingUrl="#contato"
+        whatsappNumber={contactConfig.advocacia.floatingCta.whatsappNumber}
+        whatsappMessage={contactConfig.advocacia.floatingCta.whatsappMessage}
+        phoneNumber={contactConfig.advocacia.floatingCta.phoneNumber}
+        bookingUrl={contactConfig.advocacia.floatingCta.bookingUrl}
         theme="dark"
       />
     </>

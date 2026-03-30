@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, MapPin, BedDouble, Maximize2, Phone } from "lucide-react";
+import { buildTelHref, contactConfig } from "@/lib/contact-config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -65,7 +66,9 @@ function StatPill({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function HeroSection({ theme = "dark" }: HeroProps) {
+  const isDark = theme === "dark";
   const sectionRef = useRef<HTMLElement>(null);
+  const heroPhoneHref = buildTelHref(contactConfig.imoveis.heroPhone.telHref);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -82,7 +85,7 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-[100svh] overflow-hidden bg-[#0A0A0B]"
+      className={`relative w-full min-h-[100svh] overflow-hidden ${isDark ? "bg-[#0A0A0B]" : "bg-[#FAF8F4]"}`}
       aria-label="Imóvel em destaque"
     >
       {/* ── Full-bleed background image ── */}
@@ -144,12 +147,12 @@ export default function HeroSection({ theme = "dark" }: HeroProps) {
 
         {/* Phone CTA */}
         <a
-          href="tel:+556199999999"
+          href={heroPhoneHref}
           className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm text-white text-xs font-medium tracking-wide transition-all duration-200 hover:bg-white/16 hover:border-white/35"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           <Phone size={12} />
-          (61) 9 9999-9999
+          {contactConfig.imoveis.heroPhone.display}
         </a>
       </motion.div>
 

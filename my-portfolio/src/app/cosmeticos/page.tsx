@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, cosmeticosJsonLd } from "@/lib/seo";
+import { contactConfig } from "@/lib/contact-config";
 
 import HeroSection      from "@/components/cosmeticos/HeroSection";
 import BrandStrip       from "@/components/cosmeticos/BrandStrip";
@@ -14,7 +15,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Representante exclusiva de marcas premium de beleza no DF. L'Oréal, Wella, Kérastase, La Roche-Posay e mais. Condições especiais para salões, clínicas e revendedores.",
   path: "/cosmeticos",
-  ogImage: "/og/cosmeticos.jpg",
+  ogImage: "/images/cosmeticos/og/cosmeticos.png",
 });
 
 export default function CosmeticosPage() {
@@ -26,15 +27,15 @@ export default function CosmeticosPage() {
       />
       <HeroSection />
       <BrandStrip />
-      <ProductCatalog whatsappNumber="5561999999999" />
-      <WhyDistribute whatsappNumber="5561999999999" />
+      <ProductCatalog whatsappNumber={contactConfig.cosmeticos.whatsapp.number} />
+      <WhyDistribute whatsappNumber={contactConfig.cosmeticos.whatsapp.number} />
       <TestimonialsGrid />
-      <ContactForm whatsappNumber="5561999999999" />
+      <ContactForm whatsappNumber={contactConfig.cosmeticos.whatsapp.number} />
       <FloatingCTA
-        whatsappNumber="5561999999999"
-        whatsappMessage="Olá! Vi o site e gostaria de saber mais sobre os produtos e como me tornar revendedora."
-        phoneNumber="6199999999"
-        bookingUrl="#contato"
+        whatsappNumber={contactConfig.cosmeticos.floatingCta.whatsappNumber}
+        whatsappMessage={contactConfig.cosmeticos.floatingCta.whatsappMessage}
+        phoneNumber={contactConfig.cosmeticos.floatingCta.phoneNumber}
+        bookingUrl={contactConfig.cosmeticos.floatingCta.bookingUrl}
         theme="dark"
       />
     </>

@@ -35,31 +35,12 @@ const DEFAULT_IMAGES: GalleryImage[] = [
   { id: "g8", src: "/images/imoveis/gallery-garagem.png",   alt: "Garagem para 4 veículos com sistema automatizado",            room: "Garagem",          width: 16, height: 9  },
 ];
 
-// ─── Gradient placeholders per room ──────────────────────────────────────────
-
-const ROOM_GRADIENTS: Record<string, string> = {
-  "Sala de estar":   "linear-gradient(155deg, #8090a8 0%, #607080 40%, #405060 100%)",
-  "Suíte master":    "linear-gradient(155deg, #c8b090 0%, #a08060 40%, #806040 100%)",
-  "Cozinha gourmet": "linear-gradient(155deg, #d0c8b8 0%, #b0a888 40%, #908868 100%)",
-  "Área de lazer":   "linear-gradient(155deg, #6090a0 0%, #407880 40%, #205860 100%)",
-  "Home office":     "linear-gradient(155deg, #908070 0%, #706050 40%, #504030 100%)",
-  "Jardim":          "linear-gradient(155deg, #708060 0%, #506040 40%, #304020 100%)",
-  "Banheiro":        "linear-gradient(155deg, #c0c8d0 0%, #a0a8b0 40%, #808890 100%)",
-  "Garagem":         "linear-gradient(155deg, #606870 0%, #404850 40%, #202830 100%)",
-};
-
 // ─── Lightbox variants ────────────────────────────────────────────────────────
 
 const backdropVariants = {
   hidden:  { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.3 } },
   exit:    { opacity: 0, transition: { duration: 0.22 } },
-};
-
-const lightboxVariants = {
-  hidden:  { opacity: 0, scale: 0.93 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const } },
-  exit:    { opacity: 0, scale: 0.96, transition: { duration: 0.22, ease: "easeIn" as const } },
 };
 
 const slideVariants = {
@@ -229,14 +210,11 @@ function GalleryThumb({
   image,
   index,
   onOpen,
-  theme,
 }: {
   image: GalleryImage;
   index: number;
   onOpen: (i: number) => void;
-  theme: "light" | "dark";
 }) {
-  const isDark = theme === "dark";
   const isWide = (image.width ?? 4) / (image.height ?? 3) > 1.5;
 
   return (
@@ -315,7 +293,6 @@ export default function PropertyGallery({
   const eyebrowColor = isDark ? "text-amber-400/60" : "text-amber-700/70";
   const headingColor = isDark ? "text-white"        : "text-stone-900";
   const subColor     = isDark ? "text-white/40"     : "text-stone-500";
-  const trackBg      = isDark ? "bg-white/4"        : "bg-stone-100";
   const navBtn       = isDark
     ? "border-white/10 text-white/45 hover:border-white/25 hover:text-white bg-white/[0.03] hover:bg-white/[0.07]"
     : "border-stone-200 text-stone-400 hover:border-stone-400 hover:text-stone-700 bg-white hover:bg-stone-50";
@@ -427,7 +404,6 @@ export default function PropertyGallery({
                     image={img}
                     index={i}
                     onOpen={openLightbox}
-                    theme={theme}
                   />
                 </div>
               ))}

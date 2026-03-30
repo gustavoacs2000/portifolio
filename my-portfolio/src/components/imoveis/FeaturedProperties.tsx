@@ -415,7 +415,7 @@ export default function FeaturedProperties({
 
             {/* Secondary stack */}
             <div className="flex flex-col gap-4 lg:gap-5">
-              {secondary.slice(0, 2).map((p, i) => (
+              {secondary.slice(0, 2).map((p) => (
                 <PropertyCard
                   key={p.id}
                   property={p}

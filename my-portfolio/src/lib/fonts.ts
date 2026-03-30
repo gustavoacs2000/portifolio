@@ -1,11 +1,14 @@
 import {
   Cormorant_Garamond,
+  Cormorant_SC,
+  Libre_Baskerville,
   Inter,
   Playfair_Display,
   Fraunces,
   DM_Serif_Display,
   DM_Sans,
   Plus_Jakarta_Sans,
+  Syne
 } from "next/font/google";
 
 export const cormorant = Cormorant_Garamond({
@@ -13,6 +16,21 @@ export const cormorant = Cormorant_Garamond({
   weight: ["300", "400"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
+  display: "swap",
+});
+
+export const cormorantSc = Cormorant_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cormorant-sc",
+  display: "swap",
+});
+
+export const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-libre-baskerville",
   display: "swap",
 });
 
@@ -57,5 +75,12 @@ export const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-plus-jakarta",
+  display: "swap",
+});
+
+export const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
   display: "swap",
 });

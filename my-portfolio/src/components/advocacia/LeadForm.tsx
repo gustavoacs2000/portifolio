@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useCallback, useId } from "react";
+import { useState, useCallback } from "react";
 import { ArrowRight, ArrowLeft, Check, AlertCircle, CheckCircle2 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -516,7 +516,6 @@ function SuccessScreen({ isDark }: { isDark: boolean }) {
 
 export default function LeadForm({ theme = "dark", onSubmit }: LeadFormProps) {
   const isDark = theme === "dark";
-  const formId = useId();
 
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);

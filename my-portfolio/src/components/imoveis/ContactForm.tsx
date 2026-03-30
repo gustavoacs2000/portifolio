@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useState, useCallback, useRef } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle, Phone, MessageCircle } from "lucide-react";
+import { buildTelHref, buildWhatsAppHref, contactConfig } from "@/lib/contact-config";
 
 interface ContactFormProps {
   theme?: "light" | "dark";
@@ -58,7 +59,7 @@ export default function ContactForm({ theme = "dark", onSubmit }: ContactFormPro
     setData(p=>({...p,neighborhoods:p.neighborhoods.includes(n)?p.neighborhoods.filter(x=>x!==n):[...p.neighborhoods,n]}));
   },[]);
 
-  const validate=()=>{
+  const validate = useCallback(() => {
     const e:Record<string,string>={};
     if(!data.name.trim()) e.name="Informe seu nome";
     if(data.phone.replace(/\D/g,"").length<10) e.phone="Telefone inválido";
@@ -66,14 +67,14 @@ export default function ContactForm({ theme = "dark", onSubmit }: ContactFormPro
     if(!data.interest) e.interest="Selecione";
     if(!data.priceRange) e.priceRange="Selecione";
     setErrors(e); return Object.keys(e).length===0;
-  };
+  }, [data]);
 
   const handleSubmit=useCallback(async()=>{
     if(!validate()) return;
     setSubmitting(true);
     try { if(onSubmit) await onSubmit(data); else await new Promise(r=>setTimeout(r,1000)); setSubmitted(true); }
     finally { setSubmitting(false); }
-  },[data,onSubmit]);
+  },[data,onSubmit,validate]);
 
   const sectionBg    = isDark?"bg-[#0F0F10]":"bg-[#FAF8F4]";
   const cardBg       = isDark?"bg-[#111214] border-white/6":"bg-white border-stone-200";
@@ -83,6 +84,8 @@ export default function ContactForm({ theme = "dark", onSubmit }: ContactFormPro
   const labelColor   = isDark?"text-white/62":"text-stone-600";
   const divider      = isDark?"border-white/5":"border-stone-100";
   const sectionLabel = isDark?"text-white/28":"text-stone-400";
+  const directWhatsAppHref = buildWhatsAppHref(contactConfig.imoveis.floatingCta.whatsappNumber);
+  const directPhoneHref = buildTelHref(contactConfig.imoveis.heroPhone.telHref);
 
   const pill=(active:boolean)=>active
     ? isDark ? "bg-amber-500/12 border-amber-500/25 text-amber-300" : "bg-stone-900 border-stone-900 text-white"
@@ -120,12 +123,12 @@ export default function ContactForm({ theme = "dark", onSubmit }: ContactFormPro
                   </p>
                 </div>
                 <div className="flex gap-3 flex-wrap justify-center">
-                  <a href="https://wa.me/5561999999999" target="_blank" rel="noopener noreferrer"
+                  <a href={directWhatsAppHref} target="_blank" rel="noopener noreferrer"
                     className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium ${isDark?"bg-[#25D366]/15 text-[#25D366] border border-[#25D366]/20":"bg-[#25D366]/10 text-[#1a8f4a] border border-[#25D366]/30"}`}
                     style={{fontFamily:"'Inter', sans-serif"}}>
                     <MessageCircle size={14} />WhatsApp direto
                   </a>
-                  <a href="tel:+5561999999999" className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium border ${isDark?"border-white/10 text-white/60":"border-stone-200 text-stone-500"}`} style={{fontFamily:"'Inter', sans-serif"}}>
+                  <a href={directPhoneHref} className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium border ${isDark?"border-white/10 text-white/60":"border-stone-200 text-stone-500"}`} style={{fontFamily:"'Inter', sans-serif"}}>
                     <Phone size={14} />Ligar agora
                   </a>
                 </div>

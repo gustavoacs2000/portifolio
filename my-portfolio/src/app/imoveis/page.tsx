@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, imoveisJsonLd } from "@/lib/seo";
+import { contactConfig } from "@/lib/contact-config";
 
 import HeroSection        from "@/components/imoveis/HeroSection";
 import FeaturedProperties from "@/components/imoveis/FeaturedProperties";
@@ -28,10 +29,10 @@ export default function ImoveisPage() {
       <AgentProfile theme="dark" />
       <ContactForm theme="dark" />
       <FloatingCTA
-        whatsappNumber="5561999999999"
-        whatsappMessage="Olá! Vi o site e gostaria de conhecer os imóveis disponíveis."
-        phoneNumber="6199999999"
-        bookingUrl="#contato"
+        whatsappNumber={contactConfig.imoveis.floatingCta.whatsappNumber}
+        whatsappMessage={contactConfig.imoveis.floatingCta.whatsappMessage}
+        phoneNumber={contactConfig.imoveis.floatingCta.phoneNumber}
+        bookingUrl={contactConfig.imoveis.floatingCta.bookingUrl}
         theme="dark"
       />
     </>

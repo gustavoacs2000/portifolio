@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import {
-  cormorant,
-  inter,
-  playfair,
-  fraunces,
-  dmSerifDisplay,
-  dmSans,
-  plusJakarta,
-} from "@/lib/fonts";
+import { cormorant, inter, playfair, fraunces, dmSerifDisplay, dmSans, plusJakarta, syne } from "@/lib/fonts";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,14 +17,15 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={`
-        ${cormorant.variable}
-        ${inter.variable}
-        ${playfair.variable}
-        ${fraunces.variable}
-        ${dmSerifDisplay.variable}
-        ${dmSans.variable}
-        ${plusJakarta.variable}
-      `}
+    ${cormorant.variable}
+    ${inter.variable}
+    ${playfair.variable}
+    ${fraunces.variable}
+    ${dmSerifDisplay.variable}
+    ${dmSans.variable}
+    ${plusJakarta.variable}
+    ${syne.variable}
+  `}
     >
       <body className="antialiased">{children}</body>
     </html>
