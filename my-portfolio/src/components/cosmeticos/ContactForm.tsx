@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useCallback, useRef } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle, MessageSquare } from "lucide-react";
 import { contactConfig } from "@/lib/contact-config";
+import { submitProposal } from "@/lib/proposals/client";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -131,7 +132,7 @@ export default function ContactForm({
     setLoading(true);
     try {
       if (onSubmit) await onSubmit(data);
-      else await new Promise(r => setTimeout(r, 900));
+      else await submitProposal({ source: "cosmeticos", payload: data });
       setSubmitted(true);
     } catch { setErrors({ submit: "Erro ao enviar. Tente novamente." }); }
     finally { setLoading(false); }

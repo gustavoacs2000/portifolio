@@ -75,7 +75,7 @@ const DEFAULT_COURSES: Course[] = [
     description:
       "Aulas de violoncelo com foco em postura, sonoridade e repertorio para diferentes niveis.",
     imageSrc:
-      "https://lh3.googleusercontent.com/sitesv/APaQ0SSzx9tRh15pWogzCBDJtd3agkgBLN8pC0IcyBhEenhW-_zsaDcf5jYInjlDk_mBC-jgjVUNWo7eK_j1E2wqnjDs1126OCitr86PLBJHMiio4c8Uv30ftvoOO677thOdHyFQiqa0F6WIf6MjY07igj0TPFn9ZWBztlufKTkLFmyuaFoStL-ssIvQ5vDpg3ebx2EFeJQLuSDQT_HKLe9B-UNWaV7qBa_Y-DGpbKI=w1280",
+      "/images/dueto/course-violoncelo.jpg",
     imageAlt: "Aulas de violoncelo na Dueto Academia",
     ageRange: "Criancas e adultos",
     duration: "Aulas individuais e coletivas",
@@ -95,7 +95,7 @@ const DEFAULT_COURSES: Course[] = [
     description:
       "Aulas personalizadas de violao para tocar com seguranca e musicalidade em pouco tempo.",
     imageSrc:
-      "https://lh3.googleusercontent.com/sitesv/APaQ0SRkl_-AF8pyR-Dcsqu39XxCYumaWATcPJ35MStvcx_7VO-LhUIX34FushlldciXNRyyNN2iKhpLwHEwZR2UpDqb7wE_rSco-uYFZ7gJ7OpFR_kBmTVIODx6_LY8080qPWfhwVMqpKoJUCoCDPTRLllXOgSk6U8b35kdjncri9eIDFlXQ1o-cU03bDbFLLMhZuh2JnnaeHBglB2_4M2lnBWD6n3BuepGA5GDzx0=w1280",
+      "/images/dueto/course-violao.jpg",
     imageAlt: "Aulas de violao na Dueto Academia",
     ageRange: "Criancas e adultos",
     duration: "Aulas individuais e coletivas",

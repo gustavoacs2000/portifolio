@@ -96,8 +96,8 @@ function StatPill({
 // â”€â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function HeroSection({
-  heroImageSrc = "https://lh3.googleusercontent.com/sitesv/APaQ0STzxEmC0NIWifX_iblzzXWP8dAmtIkRezOKBMyaXJpO_jr2zlyxLmKjXK_z1hmbTPHFrJTXoxFo1sliIY71JInERnLo725Z3fbnX1FtcG07t6OxuSLrf3_ZaRZtQbAaWQ0wfV_lgO0IyrgMOM2yleLnaBAKktIozcXVDMC9wc9sj6G7U0Zv2QXYjJY=w16383",
-  heroImageAlt = "Espaco interno da Dueto Academia de Musica no Guara",
+  heroImageSrc = "/images/dueto/hero-dueto.jpeg",
+  heroImageAlt = "Equipe da Dueto Academia de Musica",
 }: HeroProps) {
   return (
     <section

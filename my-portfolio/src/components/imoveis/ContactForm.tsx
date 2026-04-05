@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useState, useCallback, useRef } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle, Phone, MessageCircle } from "lucide-react";
 import { buildTelHref, buildWhatsAppHref, contactConfig } from "@/lib/contact-config";
+import { submitProposal } from "@/lib/proposals/client";
 
 interface ContactFormProps {
   theme?: "light" | "dark";
@@ -72,7 +73,7 @@ export default function ContactForm({ theme = "dark", onSubmit }: ContactFormPro
   const handleSubmit=useCallback(async()=>{
     if(!validate()) return;
     setSubmitting(true);
-    try { if(onSubmit) await onSubmit(data); else await new Promise(r=>setTimeout(r,1000)); setSubmitted(true); }
+    try { if(onSubmit) await onSubmit(data); else await submitProposal({ source: "imoveis", payload: data }); setSubmitted(true); }
     finally { setSubmitting(false); }
   },[data,onSubmit,validate]);
 

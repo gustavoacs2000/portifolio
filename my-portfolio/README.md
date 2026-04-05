@@ -16,6 +16,19 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Proposals Email Delivery
+
+Forms can send proposals to email through `POST /api/proposals`.
+
+1. Copy `.env.example` to `.env.local`
+2. Fill these variables:
+   - `RESEND_API_KEY`
+   - `PROPOSAL_TO_EMAIL`
+   - `PROPOSAL_FROM_EMAIL`
+3. Verify your sender domain/email in Resend before using in production.
+
+If env vars are missing or provider is unavailable, the form keeps the current success flow (safe fallback) so the UI behavior is not interrupted.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { label: "Serviços",   href: "#servicos"   },
   { label: "Portfólio",  href: "#portfolio"  },
   { label: "Processo",   href: "#processo"   },
-  { label: "Tecnologias",href: "#tech"       },
   { label: "Contato",    href: "#contato"    },
 ];
 
@@ -55,21 +54,21 @@ export default function Navbar() {
             <div className="w-8 h-8 rounded-lg bg-[#00C2FF]/10 border border-[#00C2FF]/20 flex items-center justify-center">
               <span
                 className="text-[#00C2FF] font-bold text-sm leading-none"
-                style={{ fontFamily: "'Syne', sans-serif" }}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 G
               </span>
             </div>
             <div className="flex items-baseline gap-1">
               <span
-                className="text-white font-bold text-base leading-none tracking-tight"
-                style={{ fontFamily: "'Syne', sans-serif" }}
+                className="text-white font-bold text-base leading-tight tracking-tight"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 GA
               </span>
               <span
-                className="text-white/50 text-base font-normal leading-none"
-                style={{ fontFamily: "'Syne', sans-serif" }}
+                className="text-white/70 text-base font-normal leading-tight"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Solutions
               </span>
@@ -134,7 +133,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.06, duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
                 className="flex items-center justify-between py-4 border-b border-white/6 text-white/70 hover:text-white text-lg font-medium transition-colors group"
-                style={{ fontFamily: "'Syne', sans-serif" }}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link.label}
                 <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#00C2FF]" />
@@ -149,7 +148,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.35 }}
             className="inline-flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#00C2FF] text-[#08080F] font-semibold text-base tracking-wide"
-            style={{ fontFamily: "'Syne', sans-serif" }}
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Falar com especialista
             <ArrowRight size={16} />

@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback } from "react";
 import { ArrowRight, ArrowLeft, Check, AlertCircle, CheckCircle2 } from "lucide-react";
+import { submitProposal } from "@/lib/proposals/client";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -560,7 +561,7 @@ export default function LeadForm({ theme = "dark", onSubmit }: LeadFormProps) {
     setIsSubmitting(true);
     try {
       if (onSubmit) await onSubmit(data);
-      else await new Promise((r) => setTimeout(r, 1200)); // demo delay
+      else await submitProposal({ source: "advocacia", payload: data });
       setSubmitted(true);
     } catch {
       setErrors({ submit: "Erro ao enviar. Tente novamente." });

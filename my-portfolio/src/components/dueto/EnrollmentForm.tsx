@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useCallback, useRef } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle, Music } from "lucide-react";
 import { buildWhatsAppHref, contactConfig } from "@/lib/contact-config";
+import { submitProposal } from "@/lib/proposals/client";
 
 // â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -150,7 +151,7 @@ export default function EnrollmentForm({
     setLoading(true);
     try {
       if (onSubmit) await onSubmit(data);
-      else await new Promise(r => setTimeout(r, 1000));
+      else await submitProposal({ source: "dueto", payload: data });
       setSubmitted(true);
     } catch { setErrors({ submit: "Erro ao enviar. Tente novamente." }); }
     finally { setLoading(false); }
